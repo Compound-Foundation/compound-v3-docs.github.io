@@ -84,7 +84,7 @@ The Compound protocol is based on the [Compound Whitepaper](https://compound.xyz
 
 The app.compound.xyz interface is [open-source](https://github.com/compound-finance/palisade){:target="_blank"}, and maintained by the community.
 
-Please join the #development room in the Compound community [Discord](https://discord.com/invite/compound){:target="_blank"} server; Compound Labs and members of the community look forward to helping you build an application on top of Compound. Your questions help us improve, so please don't hesitate to ask if you can't find what you are looking for here.
+Please join the #development room in the Compound community [Discord](https://compound.xyz/discord){:target="_blank"} server; Compound Labs and members of the community look forward to helping you build an application on top of Compound. Your questions help us improve, so please don't hesitate to ask if you can't find what you are looking for here.
 
 ## Guides
 
