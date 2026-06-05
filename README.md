@@ -18,10 +18,10 @@ To modify the website, make a pull request here.
 ## Install Ruby first
 
 ## Make sure you FORK the repository so you can make a pull request later
-git clone git@github.com:my-github-username/compound-finance.github.io.git
+git clone git@github.com:my-github-username/compound-v3-docs.github.io.git
 
 ## Navigate to the Jekyll app folder
-cd compound-finance.github.io/docs/
+cd compound-v3-docs.github.io/docs/
 
 ## Get the Ruby dependencies for Jekyll to work
 bundle
