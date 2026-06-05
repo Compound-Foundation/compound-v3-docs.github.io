@@ -80,9 +80,9 @@ deployments:
   </div>
 </div>
 
-The Compound protocol is based on the [Compound Whitepaper](https://compound.finance/documents/Compound.Whitepaper.pdf){:target="_blank"} (2019); the codebase is [open-source](https://github.com/compound-finance/compound-protocol){:target="_blank"}, and maintained by the community.
+The Compound protocol is based on the [Compound Whitepaper](https://compound.xyz/documents/Compound.Whitepaper.pdf){:target="_blank"} (2019); the codebase is [open-source](https://github.com/compound-finance/compound-protocol){:target="_blank"}, and maintained by the community.
 
-The app.compound.finance interface is [open-source](https://github.com/compound-finance/palisade){:target="_blank"}, and maintained by the community.
+The app.compound.xyz interface is [open-source](https://github.com/compound-finance/palisade){:target="_blank"}, and maintained by the community.
 
 Please join the #development room in the Compound community [Discord](https://discord.com/invite/compound){:target="_blank"} server; Compound Labs and members of the community look forward to helping you build an application on top of Compound. Your questions help us improve, so please don't hesitate to ask if you can't find what you are looking for here.
 

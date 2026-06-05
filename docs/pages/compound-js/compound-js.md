@@ -20,7 +20,7 @@ sidebar_nav_data:
 
 The SDK is currently in open beta. **Use at your own risk.**
 
-For bugs reports and feature requests, either create an issue in the [GitHub repository](https://github.com/compound-finance/compound-js) or send a message in the Development channel of the [Compound Discord](https://compound.finance/discord).
+For bugs reports and feature requests, either create an issue in the [GitHub repository](https://github.com/compound-finance/compound-js) or send a message in the Development channel of the [Compound Discord](https://compound.xyz/discord).
 
 ## Constructor
 

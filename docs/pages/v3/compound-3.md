@@ -2556,9 +2556,9 @@ deployments:
 
 The initial deployment of Compound III is on Ethereum and the base asset is USDC.
 
-Please join the **#development** room in the Compound community [Discord](https://compound.finance/discord){:target="_blank"} server as well as the forums at [comp.xyz](https://www.comp.xyz){:target="_blank"}; Compound Labs and members of the community look forward to helping you build an application on top of Compound III. Your questions help us improve, so please don't hesitate to ask if you can't find what you are looking for here.
+Please join the **#development** room in the Compound community [Discord](https://compound.xyz/discord){:target="_blank"} server as well as the forums at [comp.xyz](https://www.comp.xyz){:target="_blank"}; Compound Labs and members of the community look forward to helping you build an application on top of Compound III. Your questions help us improve, so please don't hesitate to ask if you can't find what you are looking for here.
 
-For documentation of the Compound v2 Protocol, see [docs.compound.finance/v2](/v2/).
+For documentation of the Compound v2 Protocol, see [docs.compound.xyz/v2](/v2/).
 
 ### Networks
 
