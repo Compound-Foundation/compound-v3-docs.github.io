@@ -63,7 +63,19 @@ fi
 # Download source file
 api_url="${GITHUB_API_BASE}/repos/${SOURCE_OWNER}/${SOURCE_REPO}/contents/${SOURCE_PATH}?ref=${SOURCE_BRANCH}"
 echo "Downloading source file from ${api_url}"
-curl "${curl_args[@]}" -H "Accept: application/vnd.github.v3.raw" "${api_url}" -o "${tmp_file}"
+download_status="$(curl "${curl_args[@]}" -H "Accept: application/vnd.github.v3.raw" \
+  -w "%{http_code}" "${api_url}" -o "${tmp_file}")"
+
+if [[ "${download_status}" != "200" ]]; then
+  echo "Failed to download source file (HTTP ${download_status}):" >&2
+  cat "${tmp_file}" >&2
+  exit 1
+fi
+
+if [[ ! -s "${tmp_file}" ]]; then
+  echo "Downloaded source file is empty; refusing to sync." >&2
+  exit 1
+fi
 
 mkdir -p "$(dirname "${TARGET_ABS_PATH}")"
 
