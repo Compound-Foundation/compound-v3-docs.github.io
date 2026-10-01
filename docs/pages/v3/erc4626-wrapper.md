@@ -12,7 +12,6 @@ sidebar_nav_data:
   depositing-a-comet-position: Depositing a Comet Position
   resolving-a-wrapper: Resolving a Wrapper
   integration-notes: Integration Notes
-  security: Security
 ---
 
 # ERC-4626 Wrapper
@@ -37,10 +36,6 @@ Ethereum mainnet:
 | Wrapped Compound USDC | wcUSDCv3 | [0x89dd54aB898944BB4cb8a2C403B7D511F88f9E73](https://etherscan.io/address/0x89dd54aB898944BB4cb8a2C403B7D511F88f9E73){:target="_blank"} | cUSDCv3 `0xc3d688B66703497DAA19211EEdff47f25384cdc3` |
 | Wrapped Compound USDT | wcUSDTv3 | [0xD7c9F42a35C8d13b71D4c0B024AE9eb0e77b9cFf](https://etherscan.io/address/0xD7c9F42a35C8d13b71D4c0B024AE9eb0e77b9cFf){:target="_blank"} | cUSDTv3 `0x3Afdc9BCA9213A35503b077a6072F3D0d5AB0840` |
 | WrappedCometERC4626Factory | | [0xf77f675a383eB43fa032ea3c6d1dd4dC56B69BF6](https://etherscan.io/address/0xf77f675a383eB43fa032ea3c6d1dd4dC56B69BF6){:target="_blank"} | |
-
-The factory is owned by the multi-sig [0xBcaa2988d7e1A6955A204B280c951fa3Aa5f1c0B](https://etherscan.io/address/0xBcaa2988d7e1A6955A204B280c951fa3Aa5f1c0B){:target="_blank"}. The owner can only create a wrapper for a market that has none. It has no function that reaches an existing wrapper or the funds in it. Ownership cannot be renounced; it can only be transferred through a two-step handover.
-
-Each wrapper was seeded at creation with 10 units of its base token, whose shares were minted to `0x000000000000000000000000000000000000dEaD` and are permanently locked. The seed keeps `totalSupply()` above zero, which defends against empty-vault share-inflation attacks.
 
 ### Depositing the Base Token
 
@@ -141,9 +136,3 @@ address wrapper = factory.getWrapper(0xc3d688B66703497DAA19211EEdff47f25384cdc3)
 **Dust deposits revert.** Any call that would move zero assets or mint or burn zero shares reverts with a typed error such as `ZeroAssetsCredited` or `ZeroSharesMinted`, rather than succeeding as a no-op.
 
 **Tokens sent directly to a wrapper are not recoverable.** A direct Comet transfer to a wrapper raises the share price for existing holders. Collateral or other tokens sent to a wrapper are stranded permanently.
-
-### Security
-
-The wrapper and factory were audited by [Certora](https://www.certora.com/){:target="_blank"} in September 2026, including a review of the fixes for all reported findings. The audit report is available [here](TODO-AUDIT-REPORT-URL){:target="_blank"}.
-
-The wrapper's rounding guards assume each market's `baseSupplyIndex` stays below `2e15`. Mainnet markets measured 1.0077e15 to 1.2019e15 in September 2026. If a market crosses that bound, `mint`, `redeem`, and `withdraw(maxWithdraw(owner))` on its wrapper revert rather than misprice, and a replacement would require a new factory.
