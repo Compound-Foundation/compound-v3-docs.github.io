@@ -22,7 +22,7 @@ The Wrapped Comet ERC-4626 vault converts a base-asset supply position into a fi
 
 * The vault's `asset()` is the Comet market token (for example cUSDCv3), and `totalAssets()` is the vault's live `comet.balanceOf(address(this))`.
 * Wrappers are immutable. They have no owner, admin, pauser, sweep function, or upgrade path.
-* Supported markets are Ethereum mainnet cUSDCv3 and cUSDTv3.
+* Supported markets are Ethereum mainnet cUSDCv3, cUSDTv3, and ciUSDCv3 (Institutional USDC).
 * Wrapper shares have 18 decimals on every market.
 
 The wrapper is an extension that sits on top of Compound III. It does not change any Comet market, and Comet markets do not depend on it.
@@ -35,6 +35,7 @@ Ethereum mainnet:
 | --- | --- | --- | --- |
 | Wrapped Compound USDC | wcUSDCv3 | [0x89dd54aB898944BB4cb8a2C403B7D511F88f9E73](https://etherscan.io/address/0x89dd54aB898944BB4cb8a2C403B7D511F88f9E73){:target="_blank"} | cUSDCv3 `0xc3d688B66703497DAA19211EEdff47f25384cdc3` |
 | Wrapped Compound USDT | wcUSDTv3 | [0xD7c9F42a35C8d13b71D4c0B024AE9eb0e77b9cFf](https://etherscan.io/address/0xD7c9F42a35C8d13b71D4c0B024AE9eb0e77b9cFf){:target="_blank"} | cUSDTv3 `0x3Afdc9BCA9213A35503b077a6072F3D0d5AB0840` |
+| Wrapped Compound Institutional USDC | wciUSDCv3 | [0xc7Eb9aA5B9ae154C1bAb08872E90fC44e522E463](https://etherscan.io/address/0xc7Eb9aA5B9ae154C1bAb08872E90fC44e522E463){:target="_blank"} | ciUSDCv3 `0x207158a267CBD2598BB3d611D8CBdEE2709F2F8C` |
 | WrappedCometERC4626Factory | | [0xf77f675a383eB43fa032ea3c6d1dd4dC56B69BF6](https://etherscan.io/address/0xf77f675a383eB43fa032ea3c6d1dd4dC56B69BF6){:target="_blank"} | |
 
 ### Depositing the Base Token
@@ -127,9 +128,9 @@ address wrapper = factory.getWrapper(0xc3d688B66703497DAA19211EEdff47f25384cdc3)
 
 **Use `depositAll` and `redeem` for whole positions.** Anyone can call `comet.transfer(account, 0)`, which reduces the account's Comet balance by about one base unit through rounding. A `deposit` sized to a balance read off-chain, or a `withdraw` sized to `maxWithdraw`, can be front-run this way and revert. `depositAll` reads the balance at execution and `redeem(maxRedeem(owner), ...)` burns exact shares, so neither is affected. `withdraw(maxWithdraw(owner), ...)` can also leave a few base units of unburnable dust shares behind.
 
-**Shares and assets use different decimals.** Shares have 18 decimals; cUSDCv3, cUSDTv3, USDC, and USDT have 6. Convert with `convertToAssets` and `convertToShares` rather than hard-coded scaling.
+**Shares and assets use different decimals.** Shares have 18 decimals; cUSDCv3, cUSDTv3, ciUSDCv3, USDC, and USDT have 6. Convert with `convertToAssets` and `convertToShares` rather than hard-coded scaling.
 
-**Wrapped positions do not earn COMP.** Protocol rewards accrue to the wrapper's address, and the wrapper has no function to claim or distribute them. Reward speeds on cUSDCv3 and cUSDTv3 are currently zero. If governance enables rewards on these markets, rewards accruing to wrapped supply would be permanently locked in the wrapper.
+**Wrapped positions do not earn COMP.** Protocol rewards accrue to the wrapper's address, and the wrapper has no function to claim or distribute them. Reward speeds on cUSDCv3, cUSDTv3, and ciUSDCv3 are currently zero. If governance enables rewards on these markets, rewards accruing to wrapped supply would be permanently locked in the wrapper.
 
 **Pauses.** While Comet's transfer pause is active, `maxDeposit`, `maxMint`, `maxWithdraw`, and `maxRedeem` return 0 and the ERC-4626 functions revert. The router functions are governed by Comet's supply and withdraw pauses instead and revert inside Comet when those are active.
 
