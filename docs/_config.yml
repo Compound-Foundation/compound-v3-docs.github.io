@@ -15,6 +15,7 @@ v3_nav_data:
   Liquidation: /liquidation/
   Account Management: /account-management/
   Protocol Rewards: /protocol-rewards/
+  ERC-4626 Wrapper: /erc4626-wrapper/
   Governance: /governance/
   Helper Functions: /helper-functions/
 
